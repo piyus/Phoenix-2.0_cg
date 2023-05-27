@@ -37,9 +37,9 @@ endif
 ifeq ($(OSTYPE),Linux)
 OS = -D_LINUX_
 #DEBUG = -g
-CC = /home/piyus/Desktop/safety/build/bin/clang
+CC = ../build/bin/clang
 CFLAGS = -Wall $(OS) $(DEBUG) -O3 -g -DNO_MMAP -fsanitize=fastaddress
-LIBS = -pthread -L /home/piyus/Desktop/safety/jemalloc/lib -ljemalloc_cg -lsupport
+LIBS = -pthread -L ../jemalloc/lib -ljemalloc_cg -lsupport
 endif
 
 ifeq ($(OSTYPE),SunOS)
