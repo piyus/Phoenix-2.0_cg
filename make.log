@@ -1,0 +1,567 @@
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c map_reduce.c -o map_reduce.o -I../include
+In file included from map_reduce.c:45:
+./memory.h:38:13: warning: inline function 'mem_free' is not defined [-Wundefined-inline]
+inline void mem_free (void *ptr);
+            ^
+map_reduce.c:361:5: note: used here
+    mem_free (env);
+    ^
+In file included from map_reduce.c:45:
+./memory.h:32:14: warning: inline function 'mem_malloc' is not defined [-Wundefined-inline]
+inline void *mem_malloc (size_t size);
+             ^
+map_reduce.c:372:11: note: used here
+    env = mem_malloc (sizeof (mr_env_t));
+          ^
+In file included from map_reduce.c:45:
+./memory.h:37:14: warning: inline function 'mem_memset' is not defined [-Wundefined-inline]
+inline void *mem_memset (void *s, int c, size_t n);
+             ^
+map_reduce.c:377:5: note: used here
+    mem_memset (env, 0, sizeof (mr_env_t));
+    ^
+In file included from map_reduce.c:46:
+./processor.h:32:19: warning: inline function 'proc_get_num_cpus' is not defined [-Wundefined-inline]
+extern inline int proc_get_num_cpus (void);
+                  ^
+map_reduce.c:384:17: note: used here
+    num_procs = proc_get_num_cpus ();
+                ^
+In file included from map_reduce.c:45:
+./memory.h:34:14: warning: inline function 'mem_calloc' is not defined [-Wundefined-inline]
+inline void *mem_calloc (size_t num, size_t size);
+             ^
+map_reduce.c:472:54: note: used here
+        env->intermediate_vals[i] = (keyvals_arr_t *)mem_calloc (
+                                                     ^
+In file included from map_reduce.c:45:
+./memory.h:36:14: warning: inline function 'mem_memcpy' is not defined [-Wundefined-inline]
+inline void *mem_memcpy (void *dest, const void *src, size_t size);
+             ^
+map_reduce.c:597:9: note: used here
+        mem_memcpy (th_arg_array[thread_index], th_arg, sizeof (thread_arg_t));
+        ^
+In file included from map_reduce.c:46:
+./processor.h:33:19: warning: inline function 'proc_bind_thread' is not defined [-Wundefined-inline]
+extern inline int proc_bind_thread (int cpu_id);
+                  ^
+map_reduce.c:747:18: note: used here
+    CHECK_ERROR (proc_bind_thread (th_arg->cpu_id) != 0);
+                 ^
+In file included from map_reduce.c:54:
+./locality.h:32:12: warning: inline function 'loc_get_lgrp' is not defined [-Wundefined-inline]
+inline int loc_get_lgrp ();
+           ^
+map_reduce.c:754:17: note: used here
+    mwta.lgrp = loc_get_lgrp();
+                ^
+In file included from map_reduce.c:46:
+./processor.h:34:19: warning: inline function 'proc_unbind_thread' is not defined [-Wundefined-inline]
+extern inline int proc_unbind_thread ();
+                  ^
+map_reduce.c:785:18: note: used here
+    CHECK_ERROR (proc_unbind_thread () != 0);
+                 ^
+In file included from map_reduce.c:53:
+./iterator.h:49:12: warning: inline function 'iter_add' is not defined [-Wundefined-inline]
+inline int iter_add (struct iterator_t *, keyvals_t *);
+           ^
+map_reduce.c:860:30: note: used here
+                CHECK_ERROR (iter_add (&args->itr, curr_key_val));
+                             ^
+In file included from map_reduce.c:53:
+./iterator.h:45:13: warning: inline function 'iter_rewind' is not defined [-Wundefined-inline]
+inline void iter_rewind (struct iterator_t *);
+            ^
+map_reduce.c:887:13: note: used here
+            iter_rewind (&args->itr);
+            ^
+In file included from map_reduce.c:53:
+./iterator.h:46:12: warning: inline function 'iter_next_list' is not defined [-Wundefined-inline]
+inline int iter_next_list (struct iterator_t *, keyvals_t **);
+           ^
+map_reduce.c:888:20: note: used here
+            while (iter_next_list (&args->itr, &curr_key_val)) {
+                   ^
+In file included from map_reduce.c:53:
+./iterator.h:44:13: warning: inline function 'iter_reset' is not defined [-Wundefined-inline]
+inline void iter_reset (struct iterator_t *);
+            ^
+map_reduce.c:899:13: note: used here
+            iter_reset(&args->itr);
+            ^
+In file included from map_reduce.c:53:
+./iterator.h:43:12: warning: inline function 'iter_init' is not defined [-Wundefined-inline]
+inline int iter_init (struct iterator_t *, int);
+           ^
+map_reduce.c:957:18: note: used here
+    CHECK_ERROR (iter_init (&rwta.itr, env->num_map_threads));
+                 ^
+In file included from map_reduce.c:53:
+./iterator.h:47:13: warning: inline function 'iter_finalize' is not defined [-Wundefined-inline]
+inline void iter_finalize (struct iterator_t *);
+            ^
+map_reduce.c:973:5: note: used here
+    iter_finalize (&rwta.itr);
+    ^
+In file included from map_reduce.c:54:
+./locality.h:30:12: warning: inline function 'loc_get_lgrp_size' is not defined [-Wundefined-inline]
+inline int loc_get_lgrp_size ();
+           ^
+map_reduce.c:1122:40: note: used here
+    num_lgrps = env->num_map_threads / loc_get_lgrp_size();
+                                       ^
+In file included from map_reduce.c:54:
+./locality.h:33:12: warning: inline function 'loc_mem_to_lgrp' is not defined [-Wundefined-inline]
+inline int loc_mem_to_lgrp (void *);
+           ^
+map_reduce.c:1189:20: note: used here
+            lgrp = loc_mem_to_lgrp (addr);
+                   ^
+In file included from map_reduce.c:45:
+./memory.h:35:14: warning: inline function 'mem_realloc' is not defined [-Wundefined-inline]
+inline void *mem_realloc (void *ptr, size_t size);
+             ^
+map_reduce.c:1488:21: note: used here
+                    mem_realloc (arr->arr, arr->alloc_len * sizeof (keyvals_t));
+                    ^
+map_reduce.c:497:6: warning: unused function 'env_print' [-Wunused-function]
+void env_print (mr_env_t* env)
+     ^
+Replacing:   %321 = call i8* bitcast (i8* (%struct.list_ent*, i8*, i64, i8*)* @san_interior_limit to i8* (%struct.list_ent*, %struct.task_t*, i64, i8*)*)(%struct.list_ent* %retval.0.i.i.i21.i.i.i.pbase, %struct.task_t* %task1.i.i.i.i, i64 32, i8* %319), !dbg !1110 Size1:32
+With:   %336 = call i8* @san_interior_limit(%struct.list_ent* %retval.0.i.i.i21.i.i.i.pbase, i8* %add.ptr.i24.i.i.i, i64 1, i8* %319), !dbg !1078 Size2:1
+Replacing:   %223 = call i8* bitcast (i8* (%struct.list_ent*, i8*, i64, i8*)* @san_interior_limit to i8* (i8*, i8*, i64, i8*)*)(i8* %call2.i.i.i, i8* %queue_elem.i.i.i, i64 1, i8* %208), !dbg !902 Size1:1
+With:   %224 = call i8* bitcast (i8* (%struct.list_ent*, i8*, i64, i8*)* @san_interior_limit to i8* (i8*, i8*, i64, i8*)*)(i8* %call2.i.i.i, i8* %queue_elem.i.i.i, i64 1, i8* %208), !dbg !903 Size2:1
+Replacing Interior -- 
+Orig:   %321 = call i8* bitcast (i8* (%struct.list_ent*, i8*, i64, i8*)* @san_interior_limit to i8* (%struct.list_ent*, %struct.task_t*, i64, i8*)*)(%struct.list_ent* %retval.0.i.i.i21.i.i.i.pbase, %struct.task_t* %task1.i.i.i.i, i64 32, i8* %318), !dbg !1110
+New:   %320 = call i8* @san_interior(%struct.list_ent* %retval.0.i.i.i21.i.i.i.pbase, %struct.task_t* %task1.i.i.i.i, i64 32, i64 0, i8* null), !dbg !1110
+Replacing Interior -- 
+Orig:   %224 = call i8* bitcast (i8* (%struct.list_ent*, i8*, i64, i8*)* @san_interior_limit to i8* (i8*, i8*, i64, i8*)*)(i8* %call2.i.i.i, i8* %queue_elem.i.i.i, i64 1, i8* %208), !dbg !902
+New:   %223 = call i8* bitcast (i8* (%struct.list_ent*, %struct.task_t*, i64, i64, i8*)* @san_interior to i8* (i8*, i8*, i64, i64, i8*)*)(i8* %call2.i.i.i, i8* %queue_elem.i.i.i, i64 1, i64 0, i8* null), !dbg !902
+Moving Abort::   call void bitcast (void (%struct.keyvals_arr_t**, i8**, i8*, i64, i64, i32, i8*)* @san_abort2 to void (%struct.thread_info_t*, i64*, i8*, i64, i64, i32, i8*)*)(%struct.thread_info_t* %8, i64* %tid.i, i8* %10, i64 8, i64 0, i32 32, i8* null), !dbg !473
+larger than base:   %call.i = tail call i8* @pthread_getspecific(i32 %0) #11, !dbg !437 VAL   %1 = bitcast i8* %call.i to %struct.mr_env_t*, !dbg !438 SZ1 1 SZ2 184
+Moving Abort::   call void bitcast (void (%struct.keyvals_arr_t**, i8**, i8*, i64, i64, i32, i8*)* @san_abort2 to void (%struct.thread_info_t*, i64*, i8*, i64, i64, i32, i8*)*)(%struct.thread_info_t* %7, i64* %tid.i, i8* %9, i64 8, i64 0, i32 8, i8* null), !dbg !470
+larger than base:   %call.i = tail call i8* @pthread_getspecific(i32 %1) #11, !dbg !436 VAL   %2 = bitcast i8* %call.i to %struct.mr_env_t*, !dbg !437 SZ1 1 SZ2 184
+Moving Abort::   call void bitcast (void (%struct.keyvals_arr_t**, i8**, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i8*, i8**, i8*, i64, i64, i32, i8*)*)(i8* %call5, i8** %59, i8* %39, i64 8, i64 0, i32 2, i8* null), !dbg !604
+Replacing:   %70 = call i8* bitcast (i8* (%struct.list_ent*, i8*, i64, i8*)* @san_interior_limit to i8* (%struct.keyvals_t*, %struct.keyvals_t*, i64, i8*)*)(%struct.keyvals_t* %65, %struct.keyvals_t* %arrayidx15.i, i64 24, i8* %67), !dbg !590 Size1:24
+With:   %72 = call i8* bitcast (i8* (%struct.list_ent*, i8*, i64, i8*)* @san_interior_limit to i8* (%struct.keyvals_t*, %struct.keyvals_t*, i64, i8*)*)(%struct.keyvals_t* %65, %struct.keyvals_t* %arrayidx15.i, i64 24, i8* %67), !dbg !595 Size2:24
+larger than base:   %call.i.i.i = call i8* @pthread_getspecific(i32 %48) #12, !dbg !649 VAL   %49 = bitcast i8* %call.i.i.i to %struct.mr_env_t*, !dbg !650 SZ1 1 SZ2 184
+Replacing:   %105 = call i8* bitcast (i8* (%struct.list_ent*, i8*, i64, i8*)* @san_interior_limit to i8* (%struct.keyvals_t*, %struct.keyvals_t*, i64, i8*)*)(%struct.keyvals_t* %97, %struct.keyvals_t* %arrayidx14.i, i64 24, i8* %99), !dbg !617 Size1:24
+With:   %107 = call i8* bitcast (i8* (%struct.list_ent*, i8*, i64, i8*)* @san_interior_limit to i8* (%struct.keyvals_t*, %struct.keyvals_t*, i64, i8*)*)(%struct.keyvals_t* %97, %struct.keyvals_t* %arrayidx14.i, i64 24, i8* %99), !dbg !623 Size2:24
+Moving Abort::   call void bitcast (void (%struct.keyvals_arr_t**, i8**, i8*, i64, i64, i32, i8*)* @san_abort2 to void (%struct.keyvals_arr_t**, %struct.keyvals_arr_t**, i8*, i64, i64, i32, i8*)*)(%struct.keyvals_arr_t** %140, %struct.keyvals_arr_t** %arrayidx76.i, i8* %142, i64 8, i64 0, i32 13, i8* null), !dbg !683
+Moving Abort::   call void bitcast (void (%struct.keyvals_arr_t**, i8**, i8*, i64, i64, i32, i8*)* @san_abort2 to void (%struct.thread_info_t*, i64*, i8*, i64, i64, i32, i8*)*)(%struct.thread_info_t* %44, i64* %tid.i.i, i8* %46, i64 8, i64 0, i32 0, i8* null), !dbg !548
+Moving Abort::   call void bitcast (void (%struct.keyvals_arr_t**, i8**, i8*, i64, i64, i32, i8*)* @san_abort2 to void (%struct.keyval_arr_t*, i8**, i8*, i64, i64, i32, i8*)*)(%struct.keyval_arr_t* %35, i8** %176, i8* %175, i64 8, i64 0, i32 20, i8* null), !dbg !658
+Moving Abort::   call void bitcast (void (%struct.keyvals_arr_t**, i8**, i8*, i64, i64, i32, i8*)* @san_abort2 to void (%struct.keyval_arr_t*, i32*, i8*, i64, i64, i32, i8*)*)(%struct.keyval_arr_t* %35, i32* %pos24.us.i, i8* %104, i64 4, i64 -8, i32 4, i8* null), !dbg !602
+NewMove::   call void bitcast (void (%struct.keyvals_arr_t**, i8**, i8*, i64, i64, i32, i8*)* @san_abort2 to void (%struct.keyval_arr_t*, i32*, i8*, i64, i64, i32, i8*)*)(%struct.keyval_arr_t* %35, i32* %104, i8* %106, i64 4, i64 0, i32 4, i8* %103), !dbg !602, !san_loopind !24
+19 warnings generated.
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c memory.c -o memory.o -I../include
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c processor.c -o processor.o -I../include
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c scheduler.c -o scheduler.o -I../include
+In file included from scheduler.c:31:
+./processor.h:32:19: warning: inline function 'proc_get_num_cpus' is not defined [-Wundefined-inline]
+extern inline int proc_get_num_cpus (void);
+                  ^
+scheduler.c:60:33: note: used here
+    policies[policy].num_cpus = proc_get_num_cpus();
+                                ^
+In file included from scheduler.c:30:
+./locality.h:31:12: warning: inline function 'loc_get_num_lgrps' is not defined [-Wundefined-inline]
+inline int loc_get_num_lgrps ();
+           ^
+scheduler.c:61:42: note: used here
+    policies[policy].num_chips_per_sys = loc_get_num_lgrps ();
+                                         ^
+2 warnings generated.
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c synch.c -o synch.o -I../include
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c taskQ.c -o taskQ.o -I../include
+In file included from taskQ.c:33:
+./memory.h:34:14: warning: inline function 'mem_calloc' is not defined [-Wundefined-inline]
+inline void *mem_calloc (size_t num, size_t size);
+             ^
+taskQ.c:98:10: note: used here
+    tq = mem_calloc(1, sizeof(taskQ_t));
+         ^
+In file included from taskQ.c:37:
+./locality.h:30:12: warning: inline function 'loc_get_lgrp_size' is not defined [-Wundefined-inline]
+inline int loc_get_lgrp_size ();
+           ^
+taskQ.c:104:28: note: used here
+    num_strands_per_chip = loc_get_lgrp_size ();
+                           ^
+In file included from taskQ.c:33:
+./memory.h:37:14: warning: inline function 'mem_memset' is not defined [-Wundefined-inline]
+inline void *mem_memset (void *s, int c, size_t n);
+             ^
+taskQ.c:124:5: note: used here
+    mem_memset(tq->seeds, 0, sizeof(unsigned int) * tq->num_threads);
+    ^
+In file included from taskQ.c:33:
+./memory.h:38:13: warning: inline function 'mem_free' is not defined [-Wundefined-inline]
+inline void mem_free (void *ptr);
+            ^
+taskQ.c:139:5: note: used here
+    mem_free(tq->seeds);
+    ^
+In file included from taskQ.c:33:
+./memory.h:32:14: warning: inline function 'mem_malloc' is not defined [-Wundefined-inline]
+inline void *mem_malloc (size_t size);
+             ^
+taskQ.c:233:20: note: used here
+    q = (queue_t*) mem_malloc (sizeof(queue_t));
+                   ^
+In file included from taskQ.c:33:
+./memory.h:36:14: warning: inline function 'mem_memcpy' is not defined [-Wundefined-inline]
+inline void *mem_memcpy (void *dest, const void *src, size_t size);
+             ^
+taskQ.c:315:5: note: used here
+    mem_memcpy (&entry->task, task, sizeof (task_t));
+    ^
+taskQ.c:394:19: warning: unused function 'tq_dequeue_normal_seq' [-Wunused-function]
+static inline int tq_dequeue_normal_seq (
+                  ^
+larger than base:   %call.i = tail call i8* @mem_calloc(i64 1, i64 40) #8, !dbg !125 VAL   %0 = bitcast i8* %call.i to %struct.taskQ_t*, !dbg !125 SZ1 1 SZ2 40
+Replacing:   %43 = call i8* bitcast (i8* (%struct.tq_lock_t*, i8*, i64, i8*)* @san_interior_limit to i8* (i8*, i8*, i64, i8*)*)(i8* %call, i8* %queue_elem, i64 1, i8* %31), !dbg !198 Size1:1
+With:   %46 = call i8* bitcast (i8* (%struct.tq_lock_t*, i8*, i64, i8*)* @san_interior_limit to i8* (i8*, i8*, i64, i8*)*)(i8* %call, i8* %queue_elem, i64 1, i8* %31), !dbg !199 Size2:1
+Replacing Interior -- 
+Orig:   %44 = call i8* bitcast (i8* (%struct.tq_lock_t*, i8*, i64, i8*)* @san_interior_limit to i8* (i8*, i8*, i64, i8*)*)(i8* %call, i8* %queue_elem, i64 1, i8* %31), !dbg !198
+New:   %43 = call i8* @san_interior(i8* %call, i8* %queue_elem, i64 1, i64 0, i8* null), !dbg !198
+Replacing:   %28 = call i8* bitcast (i8* (%struct.tq_lock_t*, i8*, i64, i8*)* @san_interior_limit to i8* (i8*, i8*, i64, i8*)*)(i8* %call, i8* %queue_elem, i64 1, i8* %16), !dbg !180 Size1:1
+With:   %31 = call i8* bitcast (i8* (%struct.tq_lock_t*, i8*, i64, i8*)* @san_interior_limit to i8* (i8*, i8*, i64, i8*)*)(i8* %call, i8* %queue_elem, i64 1, i8* %16), !dbg !181 Size2:1
+Replacing Interior -- 
+Orig:   %29 = call i8* bitcast (i8* (%struct.tq_lock_t*, i8*, i64, i8*)* @san_interior_limit to i8* (i8*, i8*, i64, i8*)*)(i8* %call, i8* %queue_elem, i64 1, i8* %16), !dbg !180
+New:   %28 = call i8* @san_interior(i8* %call, i8* %queue_elem, i64 1, i64 0, i8* null), !dbg !180
+Save Enter
+7 warnings generated.
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c mcs.c -o mcs.o -I../include
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c pt_mutex.c -o pt_mutex.o -I../include
+larger than base: i8* %l VAL   %0 = bitcast i8* %l to %union.pthread_mutex_t*, !dbg !91 SZ1 1 SZ2 40
+larger than base: i8* %l VAL   %0 = bitcast i8* %l to %union.pthread_mutex_t*, !dbg !91 SZ1 1 SZ2 40
+larger than base: i8* %l VAL   %0 = bitcast i8* %l to %union.pthread_mutex_t*, !dbg !90 SZ1 1 SZ2 40
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c locality.c -o locality.o -I../include
+In file included from locality.c:32:
+./processor.h:32:19: warning: inline function 'proc_get_num_cpus' is not defined [-Wundefined-inline]
+extern inline int proc_get_num_cpus (void);
+                  ^
+locality.c:50:12: note: used here
+    return proc_get_num_cpus ();
+           ^
+1 warning generated.
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c iterator.c -o iterator.o -I../include
+In file included from iterator.c:30:
+./memory.h:32:14: warning: inline function 'mem_malloc' is not defined [-Wundefined-inline]
+inline void *mem_malloc (size_t size);
+             ^
+iterator.c:44:23: note: used here
+        (keyvals_t **)mem_malloc (sizeof(keyvals_t *) * num_lists);
+                      ^
+In file included from iterator.c:30:
+./memory.h:38:13: warning: inline function 'mem_free' is not defined [-Wundefined-inline]
+inline void mem_free (void *ptr);
+            ^
+iterator.c:85:5: note: used here
+    mem_free (itr->list_array);
+    ^
+2 warnings generated.
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c tpool.c -o tpool.o -I../include
+In file included from tpool.c:32:
+./memory.h:34:14: warning: inline function 'mem_calloc' is not defined [-Wundefined-inline]
+inline void *mem_calloc (size_t num, size_t size);
+             ^
+tpool.c:67:13: note: used here
+    tpool = mem_calloc (1, sizeof (tpool_t));
+            ^
+In file included from tpool.c:32:
+./memory.h:32:14: warning: inline function 'mem_malloc' is not defined [-Wundefined-inline]
+inline void *mem_malloc (size_t size);
+             ^
+tpool.c:74:28: note: used here
+    tpool->args = (void **)mem_malloc (sizeof (void *) * num_threads);
+                           ^
+In file included from tpool.c:32:
+./memory.h:38:13: warning: inline function 'mem_free' is not defined [-Wundefined-inline]
+inline void mem_free (void *ptr);
+            ^
+tpool.c:126:5: note: used here
+    mem_free (tpool->thread_args);
+    ^
+Replacing Interior -- 
+Orig:   %55 = call i8* bitcast (i8* (i8**, i8**, i64, i8*)* @san_interior_limit to i8* (i8*, i8*, i64, i8*)*)(i8* %call, i8* %thread_func, i64 1, i8* %4), !dbg !229
+New:   %54 = call i8* @san_interior(i8* %call, i8* %thread_func, i64 1, i64 0, i8* null), !dbg !229
+Replacing Interior -- 
+Orig:   %52 = call i8* bitcast (i8* (i8**, i8**, i64, i8*)* @san_interior_limit to i8* (i8*, i8*, i64, i8*)*)(i8* %call, i8* %die, i64 1, i8* %4), !dbg !226
+New:   %51 = call i8* @san_interior(i8* %call, i8* %die, i64 1, i64 0, i8* null), !dbg !226
+Replacing Interior -- 
+Orig:   %49 = call i8* bitcast (i8* (i8**, i8**, i64, i8*)* @san_interior_limit to i8* (i8*, i8*, i64, i8*)*)(i8* %call, i8* %num_workers_done, i64 1, i8* %4), !dbg !223
+New:   %48 = call i8* @san_interior(i8* %call, i8* %num_workers_done, i64 1, i64 0, i8* null), !dbg !223
+Replacing Interior -- 
+Orig:   %80 = call i8* bitcast (i8* (i8**, i8**, i64, i8*)* @san_interior_limit to i8* (i8*, i8*, i64, i8*)*)(i8* %call, i8* %num_workers, i64 1, i8* %4), !dbg !252
+New:   %79 = call i8* @san_interior(i8* %call, i8* %num_workers, i64 1, i64 0, i8* null), !dbg !252
+Replacing Interior -- 
+Orig:   %46 = call i8* bitcast (i8* (i8**, i8**, i64, i8*)* @san_interior_limit to i8* (i8*, i8*, i64, i8*)*)(i8* %call, i8* %sem_all_workers_done, i64 1, i8* %4), !dbg !219
+New:   %45 = call i8* @san_interior(i8* %call, i8* %sem_all_workers_done, i64 1, i64 0, i8* null), !dbg !219
+larger than base: i8* %arg VAL   %sem_run = bitcast i8* %arg to %union.sem_t*, !dbg !108 SZ1 1 SZ2 32
+larger than base: i8* %arg VAL   %sem_run = bitcast i8* %arg to %union.sem_t*, !dbg !108 SZ1 1 SZ2 32
+MAYINTERIOR:   %shl.i = and i64 %16, 281474976710655, !dbg !160
+larger than base: i8* %arg VAL   %sem_run = bitcast i8* %arg to %union.sem_t*, !dbg !108 SZ1 1 SZ2 32
+MAYINTERIOR:   %shl.i71 = and i64 %23, 281474976710655, !dbg !185
+larger than base:   %call = tail call i8* @mem_malloc(i64 %mul) #9, !dbg !128 VAL   %2 = bitcast i8* %call to i8**, !dbg !129 SZ1 1 SZ2 8
+3 warnings generated.
+ar cr libphoenix.a map_reduce.o memory.o processor.o scheduler.o synch.o taskQ.o mcs.o pt_mutex.o locality.o iterator.o tpool.o
+ranlib libphoenix.a
+cp libphoenix.a ../lib
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c histogram.c -o histogram.o -I../../include
+histogram.c:340:41: warning: format specifies type 'short' but the argument has type 'int' [-Wformat]
+        dprintf("%hd - %" PRIdPTR "\n", pix_val % 1000, freq);
+                 ~~~                    ^~~~~~~~~~~~~~
+                 %d
+../../include/stddefines.h:39:38: note: expanded from macro 'dprintf'
+#define dprintf(...) fprintf(stdout, __VA_ARGS__)
+                                     ^~~~~~~~~~~
+Moving Abort::   call void @san_abort2(i8* %bytes, i8* %arrayidx, i8* %4, i64 1, i64 0, i32 1, i8* null), !dbg !179
+Moving Abort::   call void bitcast (void (i8*, i8*, i8*, i64, i64, i32, i8*)* @san_abort2 to void ([256 x i64]*, i64*, i64, i64, i64, i32, i8*)*)([256 x i64]* %green, i64* %arrayidx39, i64 2048, i64 8, i64 0, i32 2, i8* null), !dbg !221
+IndVarArith::   %16 = add nuw nsw i64 %indvars.iv97, 1, !dbg !206
+Moving Abort::   call void @san_abort2(i8* %5, i8* %arrayidx13, i8* %15, i64 2, i64 -1, i32 6, i8* null), !dbg !208
+Moving Abort::   call void bitcast (void (i8*, i8*, i8*, i64, i64, i32, i8*)* @san_abort2 to void ([256 x i64]*, i64*, i64, i64, i64, i32, i8*)*)([256 x i64]* %blue, i64* %arrayidx29, i64 2048, i64 8, i64 0, i32 1, i8* null), !dbg !225
+Moving Abort::   call void bitcast (void (i8*, i8*, i8*, i64, i64, i32, i8*)* @san_abort2 to void ([256 x i64]*, i64*, i64, i64, i64, i32, i8*)*)([256 x i64]* %red, i64* %arrayidx49, i64 2048, i64 8, i64 0, i32 3, i8* null), !dbg !227
+Saving Lower
+Saving Lower
+Saving Lower
+MAYINTERIOR:   %add = add nsw i64 %5, %sum.013, !dbg !183
+MAYINTERIOR:   %add = add nsw i64 %3, %sum.07, !dbg !176
+Saving Lower
+Saving Lower
+1 warning generated.
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -o histogram histogram.o -pthread -L /home/piyus/Desktop/safety/jemalloc/lib -ljemalloc -lsupport -L../../lib -lphoenix
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c histogram-seq.c -o histogram-seq.o -I../../include
+Moving Abort::   call void @san_abort2(i8* %bytes, i8* %arrayidx, i8* %4, i64 1, i64 0, i32 1, i8* null), !dbg !65
+Moving Abort::   call void @san_abort2(i8* %fdata.0.pbase, i8* %arrayidx79, i8* %22, i64 3, i64 0, i32 12, i8* null), !dbg !230
+Moving Abort::   call void bitcast (void (i8*, i8*, i8*, i64, i64, i32, i8*)* @san_abort2 to void ([256 x i32]*, i32*, i64, i64, i64, i32, i8*)*)([256 x i32]* %red, i32* %arrayidx126, i64 1024, i64 4, i64 0, i32 5, i8* null), !dbg !270
+Moving Abort::   call void bitcast (void (i8*, i8*, i8*, i64, i64, i32, i8*)* @san_abort2 to void ([256 x i32]*, i32*, i64, i64, i64, i32, i8*)*)([256 x i32]* %green, i32* %arrayidx114, i64 1024, i64 4, i64 0, i32 7, i8* null), !dbg !259
+Moving Abort::   call void bitcast (void (i8*, i8*, i8*, i64, i64, i32, i8*)* @san_abort2 to void ([256 x i32]*, i32*, i64, i64, i64, i32, i8*)*)([256 x i32]* %blue, i32* %arrayidx102, i64 1024, i64 4, i64 0, i32 2, i8* null), !dbg !248
+Saving Lower
+Saving Lower
+Saving Lower
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -o histogram-seq histogram-seq.o -pthread -L /home/piyus/Desktop/safety/jemalloc/lib -ljemalloc -lsupport -L../../lib -lphoenix
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c histogram-pthread.c -o histogram-pthread.o -I../../include
+Moving Abort::   call void @san_abort2(i8* %bytes, i8* %arrayidx, i8* %4, i64 1, i64 0, i32 1, i8* null), !dbg !332
+Moving Abort::   call void @san_abort2(i8* %9, i8* %arrayidx, i8* %11, i64 3, i64 0, i32 4, i8* null), !dbg !347
+Moving Abort::   call void bitcast (void (i8*, i8*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (%struct.thread_arg_t*, <4 x i32>*, i8*, i64, i64, i32, i8*)*)(%struct.thread_arg_t* %arg.0.pbase, <4 x i32>* %74, i8* %50, i64 1040, i64 -1024, i32 5, i8* null), !dbg !577
+Moving Abort::   call void bitcast (void (i8*, i8*, i8*, i64, i64, i32, i8*)* @san_abort2 to void ([256 x i32]*, i32*, i64, i64, i64, i32, i8*)*)([256 x i32]* %green, i32* %arrayidx225, i64 1024, i64 4, i64 0, i32 9, i8* null), !dbg !613
+Moving Abort::   call void bitcast (void (i8*, i8*, i8*, i64, i64, i32, i8*)* @san_abort2 to void ([256 x i32]*, i32*, i64, i64, i64, i32, i8*)*)([256 x i32]* %red, i32* %arrayidx237, i64 1024, i64 4, i64 0, i32 16, i8* null), !dbg !624
+Moving Abort::   call void bitcast (void (i8*, i8*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (%struct.thread_arg_t*, i8**, i8*, i64, i64, i32, i8*)*)(%struct.thread_arg_t* %arg.0.pbase, i8** %data, i8* %50, i64 24, i64 0, i32 10, i8* null), !dbg !541
+Moving Abort::   call void bitcast (void (i8*, i8*, i8*, i64, i64, i32, i8*)* @san_abort2 to void ([256 x i32]*, <4 x i32>*, i64, i64, i64, i32, i8*)*)([256 x i32]* %blue, <4 x i32>* %95, i64 1024, i64 16, i64 0, i32 12, i8* null), !dbg !592
+NewMove::   call void bitcast (void (i8*, i8*, i8*, i64, i64, i32, i8*)* @san_abort2 to void ([256 x i32]*, <4 x i32>*, i64, i64, i64, i32, i8*)*)([256 x i32]* %blue, <4 x i32>* %74, i64 1024, i64 16, i64 0, i32 12, i8* %72), !dbg !582, !san_loopind !256
+Moving Abort::   call void bitcast (void (i8*, i8*, i8*, i64, i64, i32, i8*)* @san_abort2 to void ([256 x i32]*, <4 x i32>*, i64, i64, i64, i32, i8*)*)([256 x i32]* %green, <4 x i32>* %93, i64 1024, i64 16, i64 0, i32 3, i8* null), !dbg !591
+NewMove::   call void bitcast (void (i8*, i8*, i8*, i64, i64, i32, i8*)* @san_abort2 to void ([256 x i32]*, <4 x i32>*, i64, i64, i64, i32, i8*)*)([256 x i32]* %green, <4 x i32>* %79, i64 1024, i64 16, i64 0, i32 3, i8* %77), !dbg !584, !san_loopind !256
+Moving Abort::   call void bitcast (void (i8*, i8*, i8*, i64, i64, i32, i8*)* @san_abort2 to void ([256 x i32]*, i32*, i64, i64, i64, i32, i8*)*)([256 x i32]* %blue, i32* %arrayidx213, i64 1024, i64 4, i64 0, i32 6, i8* null), !dbg !602
+Moving Abort::   call void bitcast (void (i8*, i8*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i64*, i64*, i8*, i64, i64, i32, i8*)*)(i64* %pid.0.pbase, i64* %arrayidx163, i8* %69, i64 8, i64 0, i32 14, i8* null), !dbg !566
+Moving Abort::   call void bitcast (void (i8*, i8*, i8*, i64, i64, i32, i8*)* @san_abort2 to void ([256 x i32]*, <4 x i32>*, i64, i64, i64, i32, i8*)*)([256 x i32]* %red, <4 x i32>* %96, i64 1024, i64 16, i64 0, i32 2, i8* null), !dbg !591
+NewMove::   call void bitcast (void (i8*, i8*, i8*, i64, i64, i32, i8*)* @san_abort2 to void ([256 x i32]*, <4 x i32>*, i64, i64, i64, i32, i8*)*)([256 x i32]* %red, <4 x i32>* %89, i64 1024, i64 16, i64 0, i32 2, i8* %87), !dbg !586, !san_loopind !256
+Saving Lower
+Saving Lower
+Saving Lower
+Saving Lower
+Saving Lower
+Saving Lower
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -o histogram-pthread histogram-pthread.o -pthread -L /home/piyus/Desktop/safety/jemalloc/lib -ljemalloc -lsupport -L../../lib -lphoenix
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c linear_regression.c -o linear_regression.o -I../../include
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -o linear_regression linear_regression.o -pthread -L /home/piyus/Desktop/safety/jemalloc/lib -ljemalloc -lsupport -L../../lib -lphoenix
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c linear_regression-seq.c -o linear_regression-seq.o -I../../include
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -o linear_regression-seq linear_regression-seq.o -pthread -L /home/piyus/Desktop/safety/jemalloc/lib -ljemalloc -lsupport -L../../lib -lphoenix
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c linear_regression-pthread.c -o linear_regression-pthread.o -I../../include
+larger than base:   %ret_val = alloca i32, align 4 VAL   %18 = bitcast i32* %ret_val to i8**, !dbg !496 SZ1 4 SZ2 8
+larger than base:   %ret_val = alloca i32, align 4 VAL   %18 = bitcast i32* %ret_val to i8**, !dbg !496 SZ1 4 SZ2 8
+Moving Abort::   call void bitcast (void (i8*, i64*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i8*, i32*, i64, i64, i64, i32, i8*)*)(i8* %call.i378, i32* %num_elems, i64 %20, i64 4, i64 -8, i32 5, i8* null), !dbg !493
+Moving Abort::   call void bitcast (void (i8*, i64*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i8*, i64*, i64, i64, i64, i32, i8*)*)(i8* %call.i378, i64* %tid113, i64 %20, i64 8, i64 0, i32 2, i8* null), !dbg !500
+Saving Lower
+Saving Lower
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -o linear_regression-pthread linear_regression-pthread.o -pthread -L /home/piyus/Desktop/safety/jemalloc/lib -ljemalloc -lsupport -L../../lib -lphoenix
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c pca.c -o pca.o -I../../include
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i32**, i32**, i8*, i64, i64, i32, i8*)*)(i32** %vals, i32** %arrayidx.us, i8* %4, i64 8, i64 0, i32 1, i8* null), !dbg !192
+IndVarArith::   %5 = add nuw nsw i64 %indvars.iv, %1, !dbg !194
+Moving Abort::   call void @san_abort2(i32* %pts, i32* %arrayidx.us, i8* %8, i64 4, i64 0, i32 0, i8* null), !dbg !196
+MAYINTERIOR:   %div = sdiv i32 %sum.0.lcssa, %3, !dbg !211
+MAYINTERIOR:   %div = sdiv i32 %sum.0.lcssa, %sub38, !dbg !251
+IndVarArith::   %17 = add nuw nsw i64 %indvars.iv.i, %15, !dbg !235
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i8*, i32*, i64, i64, i64, i32, i8*)*)(i8* %call, i32* %arrayidx.us.i, i64 %mul2, i64 4, i64 0, i32 1, i8* null), !dbg !237
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -o pca pca.o -pthread -L /home/piyus/Desktop/safety/jemalloc/lib -ljemalloc -lsupport -L../../lib -lphoenix
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c pca-seq.c -o pca-seq.o -I../../include
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i32**, i32**, i8*, i64, i64, i32, i8*)*)(i32** %vals, i32** %arrayidx.us, i8* %4, i64 8, i64 0, i32 1, i8* null), !dbg !59
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i32**, i32**, i8*, i64, i64, i32, i8*)*)(i32** %pts, i32** %arrayidx.us, i8* %4, i64 8, i64 0, i32 0, i8* null), !dbg !54
+Moving Abort::   call void @san_abort2(i32* %5, i32* %arrayidx5, i8* %68, i64 4, i64 0, i32 4, i8* null), !dbg !64
+Moving Abort::   call void @san_abort2(i32* %18, i32* %arrayidx8, i8* %110, i64 4, i64 0, i32 6, i8* null), !dbg !72
+Moving Abort::   call void @san_abort2(i32* %21, i32* %arrayidx14, i8* %113, i64 4, i64 0, i32 11, i8* null), !dbg !74
+Moving Abort::   call void @san_abort2(i32* %214, i32* %arrayidx5.us.i73, i8* %216, i64 4, i64 0, i32 10, i8* null), !dbg !254
+Moving Abort::   call void @san_abort2(i32* %16, i32* %arrayidx5.us.i45, i8* %18, i64 4, i64 0, i32 21, i8* null), !dbg !125
+Moving Abort::   call void @san_abort2(i32* %117, i32* %arrayidx14.i, i8* %206, i64 4, i64 0, i32 22, i8* null), !dbg !226
+Moving Abort::   call void @san_abort2(i32* %114, i32* %arrayidx8.i, i8* %209, i64 4, i64 0, i32 37, i8* null), !dbg !224
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i8*, i32**, i64, i64, i64, i32, i8*)*)(i8* %call, i32** %arrayidx.i.us, i64 %mul, i64 8, i64 0, i32 5, i8* null), !dbg !172
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i8*, i8**, i64, i64, i64, i32, i8*)*)(i8* %call, i8** %7, i64 %mul, i64 8, i64 0, i32 7, i8* null), !dbg !62
+Moving Abort::   call void @san_abort2(i32* %57, i32* %arrayidx5.i.us, i8* %115, i64 4, i64 0, i32 23, i8* null), !dbg !191
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i8*, i32**, i64, i64, i64, i32, i8*)*)(i8* %call10, i32** %arrayidx.us.i70, i64 %mul9, i64 8, i64 0, i32 2, i8* null), !dbg !251
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i8*, i32**, i64, i64, i64, i32, i8*)*)(i8* %call, i32** %arrayidx.us.i, i64 %mul, i64 8, i64 0, i32 24, i8* null), !dbg !89
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i8*, i32**, i64, i64, i64, i32, i8*)*)(i8* %call, i32** %arrayidx.us.i42, i64 %mul, i64 8, i64 0, i32 16, i8* null), !dbg !121
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i8*, i8**, i64, i64, i64, i32, i8*)*)(i8* %call10, i8** %54, i64 %mul9, i64 8, i64 0, i32 1, i8* null), !dbg !149
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i8*, i32*, i64, i64, i64, i32, i8*)*)(i8* %call7, i32* %arrayidx7.i.us, i64 %mul6, i64 4, i64 0, i32 35, i8* null), !dbg !175
+Saving Lower
+Saving Lower
+Saving Lower
+Saving Lower
+Saving Lower
+Saving Lower
+Saving Lower
+Saving Lower
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -o pca-seq pca-seq.o -pthread -L /home/piyus/Desktop/safety/jemalloc/lib -ljemalloc -lsupport -L../../lib -lphoenix
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c pca-pthread.c -o pca-pthread.o -I../../include
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i32**, i32**, i8*, i64, i64, i32, i8*)*)(i32** %vals, i32** %arrayidx.us, i8* %4, i64 8, i64 0, i32 1, i8* null), !dbg !380
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i32**, i32**, i8*, i64, i64, i32, i8*)*)(i32** %pts, i32** %arrayidx.us, i8* %4, i64 8, i64 0, i32 0, i8* null), !dbg !375
+Moving Abort::   call void @san_abort2(i32* %16, i32* %arrayidx5, i8* %79, i64 4, i64 0, i32 14, i8* null), !dbg !390
+Moving Abort::   call void @san_abort2(i32* %24, i32* %arrayidx13, i8* %111, i64 4, i64 0, i32 19, i8* null), !dbg !396
+Moving Abort::   call void @san_abort2(i32* %21, i32* %arrayidx7, i8* %118, i64 4, i64 0, i32 9, i8* null), !dbg !394
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i32**, i32**, i8*, i64, i64, i32, i8*)*)(i32** %43, i32** %arrayidx.us.i62, i8* %49, i64 8, i64 0, i32 10, i8* null), !dbg !482
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i32**, i32**, i8*, i64, i64, i32, i8*)*)(i32** %.pbase117, i32** %arrayidx.us.i47, i8* %25, i64 8, i64 0, i32 9, i8* null), !dbg !443
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i32**, i32**, i8*, i64, i64, i32, i8*)*)(i32** %.pre96, i32** %arrayidx.us.i, i8* %14, i64 8, i64 0, i32 7, i8* null), !dbg !407
+Saving Lower
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -o pca-pthread pca-pthread.o -pthread -L /home/piyus/Desktop/safety/jemalloc/lib -ljemalloc -lsupport -L../../lib -lphoenix
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c string_match.c -o string_match.o -I../../include
+string_match.c:204:48: warning: if statement has empty body [-Wempty-body]
+        if(!strcmp(key1_final, cur_word_final));
+                                               ^
+string_match.c:204:48: note: put the semicolon on a separate line to silence this warning
+string_match.c:207:48: warning: if statement has empty body [-Wempty-body]
+        if(!strcmp(key2_final, cur_word_final));
+                                               ^
+string_match.c:207:48: note: put the semicolon on a separate line to silence this warning
+string_match.c:210:48: warning: if statement has empty body [-Wempty-body]
+        if(!strcmp(key3_final, cur_word_final));
+                                               ^
+string_match.c:210:48: note: put the semicolon on a separate line to silence this warning
+string_match.c:213:48: warning: if statement has empty body [-Wempty-body]
+        if(!strcmp(key4_final, cur_word_final));
+                                               ^
+string_match.c:213:48: note: put the semicolon on a separate line to silence this warning
+Moving Abort::   call void @san_abort2(i8* %file, i8* %arrayidx, i8* %5, i64 1, i64 0, i32 1, i8* null), !dbg !196
+Moving Abort::   call void @san_abort2(i8* %8, i8* %arrayidx.i, i8* %10, i64 1, i64 0, i32 2, i8* null), !dbg !214
+4 warnings generated.
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -o string_match string_match.o -pthread -L /home/piyus/Desktop/safety/jemalloc/lib -ljemalloc -lsupport -L../../lib -lphoenix
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c string_match-seq.c -o string_match-seq.o -I../../include
+Moving Abort::   call void @san_abort2(i8* %file, i8* %arrayidx, i8* %5, i64 1, i64 0, i32 1, i8* null), !dbg !77
+Moving Abort::   call void bitcast (void (i8*, i8*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i8*, i8*, i64, i64, i64, i32, i8*)*)(i8* %call12, i8* %arrayidx5.i118, i64 1024, i64 1, i64 0, i32 16, i8* null), !dbg !183
+Moving Abort::   call void @san_abort2(i8* %41, i8* %arrayidx.i, i8* %43, i64 1, i64 0, i32 13, i8* null), !dbg !158
+Moving Abort::   call void bitcast (void (i8*, i8*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i8*, i8*, i64, i64, i64, i32, i8*)*)(i8* %call11, i8* %arrayidx.phi.trans.insert.i123, i64 1024, i64 1, i64 0, i32 15, i8* null), !dbg !187
+Saving Lower
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -o string_match-seq string_match-seq.o -pthread -L /home/piyus/Desktop/safety/jemalloc/lib -ljemalloc -lsupport -L../../lib -lphoenix
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c string_match-pthread.c -o string_match-pthread.o -I../../include
+Moving Abort::   call void @san_abort2(i8* %file, i8* %arrayidx, i8* %5, i64 1, i64 0, i32 1, i8* null), !dbg !368
+larger than base:   %ret_val = alloca i32, align 4 VAL   %15 = bitcast i32* %ret_val to i8**, !dbg !532 SZ1 4 SZ2 8
+larger than base:   %ret_val = alloca i32, align 4 VAL   %15 = bitcast i32* %ret_val to i8**, !dbg !532 SZ1 4 SZ2 8
+Moving Abort::   call void bitcast (void (i8*, i8*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i8*, i64*, i64, i64, i64, i32, i8*)*)(i8* %call.i295, i64* %arrayidx135, i64 %mul, i64 8, i64 0, i32 9, i8* null), !dbg !535
+Saving Lower
+Moving Abort::   call void bitcast (void (i8*, i8*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i8*, i8*, i64, i64, i64, i32, i8*)*)(i8* %call1, i8* %arrayidx5.i, i64 1024, i64 1, i64 0, i32 5, i8* null), !dbg !439
+Moving Abort::   call void @san_abort2(i8* %7, i8* %arrayidx.i, i8* %17, i64 1, i64 0, i32 6, i8* null), !dbg !393
+Moving Abort::   call void bitcast (void (i8*, i8*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i8*, i8*, i64, i64, i64, i32, i8*)*)(i8* %call, i8* %arrayidx.phi.trans.insert.i, i64 1024, i64 1, i64 0, i32 4, i8* null), !dbg !443
+Saving Lower
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -o string_match-pthread string_match-pthread.o -pthread -L /home/piyus/Desktop/safety/jemalloc/lib -ljemalloc -lsupport -L../../lib -lphoenix
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c kmeans.c -o kmeans.o -I../../include
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (%struct.keyval_t*, i32**, i8*, i64, i64, i32, i8*)*)(%struct.keyval_t* %means, i32** %5, i8* %4, i64 8, i64 0, i32 0, i8* null), !dbg !187
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (%struct.keyval_t*, i32**, i8*, i64, i64, i32, i8*)*)(%struct.keyval_t* %means, i32** %102, i8* %101, i64 8, i64 0, i32 29, i8* null), !dbg !245
+Moving Abort::   call void @san_abort2(i32* %107, i32* %arrayidx2.i56.us, i8* %185, i64 4, i64 0, i32 12, i8* null), !dbg !249
+Moving Abort::   call void @san_abort2(i32* %points, i32* %arrayidx.i55.us, i8* %188, i64 4, i64 0, i32 25, i8* null), !dbg !248
+Moving Abort::   call void @san_abort2(i32* %points, i32* %arrayidx.i, i8* %87, i64 4, i64 0, i32 7, i8* null), !dbg !225
+Moving Abort::   call void @san_abort2(i32* %6, i32* %arrayidx2.i, i8* %94, i64 4, i64 0, i32 6, i8* null), !dbg !227
+Moving Abort::   call void @san_abort2(i32* %clusters, i32* %arrayidx14, i8* %212, i64 4, i64 0, i32 26, i8* null), !dbg !197
+Moving Abort::   call void @san_abort2(i32* %11, i32* %arrayidx.i, i8* %84, i64 4, i64 0, i32 11, i8* null), !dbg !225
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i8*, i32*, i64, i64, i64, i32, i8*)*)(i8* %call5, i32* %arrayidx2.i, i64 %7, i64 4, i64 0, i32 5, i8* null), !dbg !228
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i8*, i8**, i64, i64, i64, i32, i8*)*)(i8* %call5, i8** %key, i64 %mul4, i64 16, i64 0, i32 9, i8* null), !dbg !275
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i8*, i32**, i64, i64, i64, i32, i8*)*)(i8* %call5, i32** %29, i64 %mul4, i64 8, i64 0, i32 3, i8* null), !dbg !296
+Saving Lower
+Saving Lower
+Saving Lower
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -o kmeans kmeans.o -pthread -L /home/piyus/Desktop/safety/jemalloc/lib -ljemalloc -lsupport -L../../lib -lphoenix
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c kmeans-seq.c -o kmeans-seq.o -I../../include
+Moving Abort::   call void @san_abort2(i32* %7, i32* %arrayidx.i44.us, i8* %182, i64 4, i64 0, i32 10, i8* null), !dbg !112
+Moving Abort::   call void @san_abort2(i32* %108, i32* %arrayidx2.i45.us, i8* %185, i64 4, i64 0, i32 30, i8* null), !dbg !113
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i32**, i32**, i8*, i64, i64, i32, i8*)*)(i32** %means, i32** %arrayidx8.us, i8* %109, i64 8, i64 0, i32 2, i8* null), !dbg !111
+Moving Abort::   call void @san_abort2(i32* %8, i32* %arrayidx.i, i8* %90, i64 4, i64 0, i32 11, i8* null), !dbg !89
+Moving Abort::   call void @san_abort2(i32* %2, i32* %arrayidx2.i, i8* %97, i64 4, i64 0, i32 8, i8* null), !dbg !91
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i8*, i32*, i64, i64, i64, i32, i8*)*)(i8* %call, i32* %arrayidx2.i.us, i64 %mul, i64 4, i64 0, i32 22, i8* null), !dbg !102
+Moving Abort::   call void @san_abort2(i32* %30, i32* %arrayidx.i.us, i8* %98, i64 4, i64 0, i32 5, i8* null), !dbg !102
+Moving Abort::   call void @san_abort2(i32* %clusters, i32* %arrayidx.us, i8* %26, i64 4, i64 0, i32 18, i8* null), !dbg !94
+Saving Lower
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i32**, i32**, i8*, i64, i64, i32, i8*)*)(i32** %vals, i32** %arrayidx.us, i8* %4, i64 8, i64 0, i32 0, i8* null), !dbg !66
+larger than base:   %call = tail call noalias i8* @malloc(i64 %mul) #10, !dbg !59 VAL   %2 = bitcast i8* %call to i32**, !dbg !60 SZ1 1 SZ2 8
+larger than base:   %call8 = tail call noalias i8* @malloc(i64 %mul7) #10, !dbg !112 VAL   %15 = bitcast i8* %call8 to i32**, !dbg !113 SZ1 1 SZ2 8
+larger than base:   %call24 = tail call noalias i8* @malloc(i64 %mul23) #10, !dbg !149 VAL   %28 = bitcast i8* %call24 to i32*, !dbg !150 SZ1 1 SZ2 4
+Moving Abort::   call void @san_abort2(i32* %147, i32* %arrayidx2.i45.us.i.us, i8* %223, i64 4, i64 0, i32 22, i8* null), !dbg !224
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i8*, i32**, i64, i64, i64, i32, i8*)*)(i8* %call8, i32** %arrayidx.us.i, i64 %mul7, i64 8, i64 0, i32 43, i8* null), !dbg !276
+Moving Abort::   call void @san_abort2(i32* %53, i32* %arrayidx2.i.i.us, i8* %142, i64 4, i64 0, i32 24, i8* null), !dbg !209
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i8*, i8**, i64, i64, i64, i32, i8*)*)(i8* %call8, i8** %27, i64 %mul7, i64 8, i64 0, i32 46, i8* null), !dbg !122
+Moving Abort::   call void @san_abort2(i32* %76, i32* %arrayidx.i44.us.i.us, i8* %241, i64 4, i64 0, i32 18, i8* null), !dbg !223
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i8*, i8**, i64, i64, i64, i32, i8*)*)(i8* %call, i8** %7, i64 %mul, i64 8, i64 0, i32 31, i8* null), !dbg !69
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i8*, i32**, i64, i64, i64, i32, i8*)*)(i8* %call8, i32** %arrayidx8.us.i.us, i64 %mul7, i64 8, i64 0, i32 28, i8* null), !dbg !219
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i8*, i32*, i64, i64, i64, i32, i8*)*)(i8* %call24, i32* %arrayidx12.i.us, i64 %mul23, i64 4, i64 0, i32 35, i8* null), !dbg !208
+Moving Abort::   call void @san_abort2(i32* %92, i32* %arrayidx.i.i.us, i8* %171, i64 4, i64 0, i32 5, i8* null), !dbg !213
+Moving Abort::   call void @san_abort2(i32* %307, i32* %arrayidx5.us.i, i8* %309, i64 4, i64 0, i32 4, i8* null), !dbg !280
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i8*, i32**, i64, i64, i64, i32, i8*)*)(i8* %call, i32** %arrayidx.i95.us, i64 %mul, i64 8, i64 0, i32 42, i8* null), !dbg !210
+Saving Lower
+Saving Lower
+Saving Lower
+Saving Lower
+Saving Lower
+Saving Lower
+Saving Lower
+Saving Lower
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -o kmeans-seq kmeans-seq.o -pthread -L /home/piyus/Desktop/safety/jemalloc/lib -ljemalloc -lsupport -L../../lib -lphoenix
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c kmeans-pthread.c -o kmeans-pthread.o -I../../include
+Moving Abort::   call void @san_abort2(i32* %13, i32* %arrayidx13, i8* %15, i64 4, i64 0, i32 25, i8* null), !dbg !345
+Moving Abort::   call void @san_abort2(i32* %12, i32* %arrayidx2.i, i8* %106, i64 4, i64 0, i32 21, i8* null), !dbg !366
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i32**, i32**, i8*, i64, i64, i32, i8*)*)(i32** %10, i32** %arrayidx9.us, i8* %127, i64 8, i64 0, i32 17, i8* null), !dbg !388
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i32**, i32**, i8*, i64, i64, i32, i8*)*)(i32** %7, i32** %arrayidx, i8* %9, i64 8, i64 0, i32 16, i8* null), !dbg !350
+Moving Abort::   call void @san_abort2(i32* %30, i32* %arrayidx.i, i8* %119, i64 4, i64 0, i32 19, i8* null), !dbg !368
+Moving Abort::   call void @san_abort2(i32* %141, i32* %arrayidx2.i48.us, i8* %219, i64 4, i64 0, i32 26, i8* null), !dbg !392
+Moving Abort::   call void @san_abort2(i32* %30, i32* %arrayidx.i47.us, i8* %222, i64 4, i64 0, i32 29, i8* null), !dbg !391
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i64*, i64*, i8*, i64, i64, i32, i8*)*)(i64* %pid.0.pbase, i64* %arrayidx113, i8* %92, i64 8, i64 0, i32 9, i8* null), !dbg !517
+Moving Abort::   call void bitcast (void (i32*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i64*, i64*, i8*, i64, i64, i32, i8*)*)(i64* %pid.0.pbase, i64* %arrayidx181, i8* %123, i64 8, i64 0, i32 5, i8* null), !dbg !583
+Saving Lower
+Saving Lower
+Saving Lower
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -o kmeans-pthread kmeans-pthread.o -pthread -L /home/piyus/Desktop/safety/jemalloc/lib -ljemalloc -lsupport -L../../lib -lphoenix
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c matrix_multiply.c -o matrix_multiply.o -I../../include
+Moving Abort::   call void bitcast (void (i8*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i32*, i32*, i8*, i64, i64, i32, i8*)*)(i32* %58, i32* %arrayidx311, i8* %120, i64 4, i64 0, i32 12, i8* null), !dbg !740
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -o matrix_multiply matrix_multiply.o -pthread -L /home/piyus/Desktop/safety/jemalloc/lib -ljemalloc -lsupport -L../../lib -lphoenix
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c matrix_multiply-seq.c -o matrix_multiply-seq.o -I../../include
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -o matrix_multiply-seq matrix_multiply-seq.o -pthread -L /home/piyus/Desktop/safety/jemalloc/lib -ljemalloc -lsupport -L../../lib -lphoenix
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c matrix_multiply-pthread.c -o matrix_multiply-pthread.o -I../../include
+larger than base:   %ret_val = alloca i32, align 4 VAL   %19 = bitcast i32* %ret_val to i8**, !dbg !488 SZ1 4 SZ2 8
+larger than base:   %ret_val = alloca i32, align 4 VAL   %19 = bitcast i32* %ret_val to i8**, !dbg !488 SZ1 4 SZ2 8
+Moving Abort::   call void bitcast (void (i8*, i32**, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i8*, i64*, i64, i64, i64, i32, i8*)*)(i8* %call.i, i64* %arrayidx82, i64 %mul, i64 8, i64 0, i32 2, i8* null), !dbg !492
+Saving Lower
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -o matrix_multiply-pthread matrix_multiply-pthread.o -pthread -L /home/piyus/Desktop/safety/jemalloc/lib -ljemalloc -lsupport -L../../lib -lphoenix
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c word_count.c -o word_count.o -I../../include
+MAYINTERIOR:   %add = add nsw i64 %4, %sum.013, !dbg !204
+MAYINTERIOR:   %add = add nsw i64 %3, %sum.07, !dbg !198
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c sort.c -o sort.o -I../../include
+Saving Lower
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -o word_count word_count.o sort.o -pthread -L /home/piyus/Desktop/safety/jemalloc/lib -ljemalloc -lsupport -L../../lib -lphoenix
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c word_count-pthread.c -o word_count-pthread.o -I../../include
+larger than base:   %ret_val = alloca i32, align 4 VAL   %9 = bitcast i32* %ret_val to i8**, !dbg !452 SZ1 4 SZ2 8
+larger than base:   %ret_val = alloca i32, align 4 VAL   %9 = bitcast i32* %ret_val to i8**, !dbg !452 SZ1 4 SZ2 8
+larger than base:   %ret_val198 = alloca i32, align 4 VAL   %30 = bitcast i32* %ret_val198 to i8**, !dbg !541 SZ1 4 SZ2 8
+larger than base:   %ret_val198 = alloca i32, align 4 VAL   %30 = bitcast i32* %ret_val198 to i8**, !dbg !541 SZ1 4 SZ2 8
+Relplacing Size:   %108 = call i8* @san_check_size_limit(i32* %ret_val198, i64 8, i8* %107), !dbg !597  SIZE: 8
+With:   %103 = call i8* @san_check_size_limit(i32* %ret_val198, i64 8, i8* %102), !dbg !593 SIZE: 8
+Moving Abort::   call void bitcast (void (i8*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i8*, i8**, i64, i64, i64, i32, i8*)*)(i8* %call141, i8** %94, i64 %mul, i64 8, i64 0, i32 1, i8* null), !dbg !576
+Moving Abort::   call void bitcast (void (i8*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i8*, i64*, i64, i64, i64, i32, i8*)*)(i8* %call.i, i64* %arrayidx108, i64 %mul, i64 8, i64 0, i32 20, i8* null), !dbg !455
+Moving Abort::   call void bitcast (void (i8*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i8*, i64*, i64, i64, i64, i32, i8*)*)(i8* %call.i, i64* %arrayidx200, i64 %mul, i64 8, i64 0, i32 10, i8* null), !dbg !549
+Moving Abort::   call void bitcast (void (i8*, i32*, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i8*, i8*, i8*, i64, i64, i32, i8*)*)(i8* %40, i8* %arrayidx55, i8* %41, i64 1, i64 0, i32 0, i8* null), !dbg !493
+Saving Lower
+Saving Lower
+Saving Lower
+Save Enter
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c sort-pthread.c -o sort-pthread.o -I../../include
+larger than base:   %ret_val = alloca i32, align 4 VAL   %3 = bitcast i32* %ret_val to i8**, !dbg !332 SZ1 4 SZ2 8
+Moving Abort::   call void bitcast (void (i8*, i8**, i8*, i64, i64, i32, i8*)* @san_abort2 to void (i8*, i64*, i64, i64, i64, i32, i8*)*)(i8* %call4, i64* %arrayidx40, i64 %mul, i64 8, i64 0, i32 0, i8* null), !dbg !345
+Saving Lower
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -o word_count-pthread word_count-pthread.o sort-pthread.o -pthread -L /home/piyus/Desktop/safety/jemalloc/lib -ljemalloc -lsupport -L../../lib -lphoenix
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -c word_count-seq.c -o word_count-seq.o -I../../include
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -fsanitize=fastaddress -D__x86_64__ -o word_count-seq word_count-seq.o -pthread -L /home/piyus/Desktop/safety/jemalloc/lib -ljemalloc -lsupport -L../../lib -lphoenix

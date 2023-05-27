@@ -1,0 +1,1 @@
+/home/piyus/Desktop/safety/build/bin/clang -Wall -D_LINUX_  -O3 -g -DNO_MMAP -mllvm -fasan-debug-func=wordcount_getword -fsanitize=fastaddress -D__x86_64__ -c word_count-seq.c -o word_count-seq.o -I../../include
