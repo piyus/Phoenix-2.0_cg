@@ -1,8 +1,7 @@
 #!/bin/bash
-source setenv.sh
-for i in 8
+for i in 1 2 4 8
 do
-sudo /home/piyus/online.sh $i
+sudo ./online.sh $i
 sleep 5
 cd histogram && sh run.sh && cd ..
 sleep 5
